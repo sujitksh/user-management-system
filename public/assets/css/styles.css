@@ -1,0 +1,28 @@
+*{
+  margin:0;
+  padding:0;
+}
+.card {
+  width: 50%;
+  margin:50px 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+  }
+  .card-title{
+     text-align: center;
+     color:green
+  }
+
+  .navbar-brand, .navbar-text{
+    color:white
+  }
+  .header-section{
+     position: relative;
+     top:50px;
+     left:100px;
+  }
+  .error-danger{
+    color: red;
+  }
