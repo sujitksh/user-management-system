@@ -89,7 +89,7 @@
     </p>
   </div>
   <div class="mb-3">
-  <select class="form-select" aria-label="Default select example" id="country" name="country">
+  <select class="form-select" aria-label="Default select example" id="country" name="country_id">
   <option value="">Select country</option>
   <!-- <option value="1" @if (old("country") == "1") {{ 'selected' }} @endif>One</option>
   <option value="2" @if (old("country") == "2") {{ 'selected' }} @endif>Two</option>
@@ -102,7 +102,7 @@
     </span>
 </div>
 <div class="mb-3">
-  <select class="form-select" aria-label="Default select example" id="state" name="state">
+  <select class="form-select" aria-label="Default select example" id="state" name="state_id">
   <option value="">Select state</option>
   <!-- <option value="1" @if (old("state") == "1") {{ 'selected' }} @endif>One</option>
   <option value="2" @if (old("state") == "2") {{ 'selected' }} @endif>Two</option>
@@ -115,7 +115,7 @@
     </span>
 </div>
 <div class="mb-3">
-  <select class="form-select" aria-label="Default select example" id="city" name="city">
+  <select class="form-select" aria-label="Default select example" id="city" name="city_id">
   <option value="">Select city</option>
   <!-- <option value="1" @if (old("city") == "1") {{ 'selected' }} @endif>One</option>
   <option value="2" @if (old("city") == "2") {{ 'selected' }} @endif>Two</option>
@@ -145,10 +145,13 @@
                })
        
         $('#country').on("change",function(){
-            const country_id = $("#country").val();
+            var country_id = $("#country").val();
+            $('#state').html("");
+            $('#state').append(`<option value="">Select city</option>`);
             $.ajax({
                method:"GET",
-               url:"state/"+country_id,
+               url:"state",
+               data:{id:country_id},
                success:function(response){
                 console.log(response);
                 $.each(response.data,function(index, value) {
@@ -162,9 +165,12 @@
 
         $('#state').on("change",function(){
           const state_id = $("#state").val();
+          $('#city').html("");
+          $('#city').append(`<option value="">Select city</option>`);
             $.ajax({
-               method:"get",
-               url:"city/"+state_id,
+               method:"GET",
+               url:"city",
+               data:{id:state_id},
                success:function(response){
                 $.each(response.data,function(index, value) {
                     $.each(value.getcity,function(index,value){

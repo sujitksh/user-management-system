@@ -11,4 +11,5 @@ class State extends Model
     function getcity(){
         return $this->hasMany(City::class);
     }
+   
 }

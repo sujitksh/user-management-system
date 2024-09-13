@@ -29,9 +29,9 @@
       @else
       <td>Other</td>
       @endif
-      <td>{{$user->country}}</td>
-      <td>{{$user->state}}</td>
-      <td>{{$user->city}}</td>
+      <td>{{$user->getcountry->country_name}}</td>
+      <td>{{$user->getstate->state_name}}</td>
+      <td>{{$user->getcity->city_name}}</td>
     </tr>
   </tbody>
 </table>

@@ -24,9 +24,9 @@ class User extends Authenticatable
         'password',
         'dob',
         'gender',
-        'country',
-        'state',
-        'city'
+        'country_id',
+        'state_id',
+        'city_id'
     ];
 
     /**
@@ -47,4 +47,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function getcountry(){
+        return $this->hasOne(Country::class,'id');
+    }
+    function getstate(){
+        return $this->hasOne(State::class,'id');
+    }
+    function getcity(){
+        return $this->hasOne(City::class,'id');
+    }
+   
 }

@@ -19,10 +19,12 @@ return new class extends Migration
             $table->enum('gender',['F','M','O']);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('country');
-            $table->string('state');
-            $table->string('city');
-            $table->rememberToken();
+            $table->unsignedBigInteger('country_id');
+            $table->foreign('country_id')->references('id')->on('countries');
+            $table->unsignedBigInteger('state_id');
+            $table->foreign('state_id')->references('id')->on('states');
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('id')->on('cities');
             $table->timestamps();
         });
     }
